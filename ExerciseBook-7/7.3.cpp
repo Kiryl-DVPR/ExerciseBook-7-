@@ -16,7 +16,7 @@ int main()
     std :: cout << "Fractions[9] = " << std::fixed << std::setprecision(2) << fractions[9] << std :: endl;
     std :: cout << "Fractions[6] = " << std::fixed << std::setprecision(2) << fractions[6] << std :: endl;
 
-    for (int x = 0; x <= arraySize; x++)
+    for (int x = 0; x < arraySize; x++)
     {
         std :: cout << x << " " << fractions[x] << std::endl;
     };
