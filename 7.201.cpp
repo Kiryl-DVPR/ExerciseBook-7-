@@ -21,7 +21,7 @@ int main()
  
     for( int i=0; i < 10; i++ )
     {
-        std::cout << "Please enter 1 - for smoke people or 2 - for no smoke people: ";
+        std::cout << "Please enter number: 1 - seat for smokers or 2 - seat for no smokers: ";
         std::cin >> typePlace;
   
         if( typePlace == 1 && type1 < 5)
@@ -35,7 +35,7 @@ int main()
         {
             if( typePlace == 1 && type1 > 4)
             {
-                std::cout << "I'm sorry. Do you want to place for smoke? yes/no: ";
+                std::cout << "There are no seats for no smokers. Do you want a seat for smokers? yes/no: ";
                 std::cin >> text;
             
                 if ( text == "yes" || text == "y")
@@ -46,29 +46,55 @@ int main()
                     type2++;
                 }else
                 {   
-                    std::cout << "I'm sorry, We don't have free place";
+                    std::cout << "There are no seats";
                     break;
                 }
             };
         }
         
         
-        if( typePlace == 2 )
+        if( typePlace == 2 && type2 < 10)
         {
             arrayPlace[type2] = 1;
             printType2( type2 );
             printArray( arrayPlace, arraySize);
             type2++;
    
+        }else
+        {
+            if( typePlace == 2 && type2 > 9)
+            {
+                std::cout << "There are no seats for smokers. Do you want a seat for no smokers? yes/no: ";
+                std::cin >> text;
+            
+                if ( text == "yes" || text == "y")
+                {
+                    arrayPlace[type1] = 1;
+                    printType1( type1 );
+                    printArray( arrayPlace, arraySize);
+                    type1++;
+                }else
+                {   
+                    std::cout << "There are no seats";
+                    break;
+                }
+            };
         };
 
     }
+
+    if( type1 == 5 && type2 == 10)
+        {
+            std::cout << std::endl << "--- There are no seats. All tickets are sold out ---";
+        };
+    
+    
 }
 
 void printType1( int i )
 {
     std::cout << " --- Our ticket --- " << std::endl;
-    std::cout << " ... Type place: 1 - no smoke" << std::endl;
+    std::cout << " ... Type place: 1 - no smokers" << std::endl;
     std::cout << " ... Place number: " << i+1 << std::endl;
     
 }
@@ -76,7 +102,7 @@ void printType1( int i )
 void printType2( int type2 )
 {
     std::cout << " --- Our ticket --- " << std::endl;
-    std::cout << " ... Type place: 2 - smoke" << std::endl;
+    std::cout << " ... Type place: 2 - smokers" << std::endl;
     std::cout << " ... Place number: " << type2+1 << std::endl;
 }
 
